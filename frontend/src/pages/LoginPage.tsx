@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className="container">
       <div className="form-box">
-        <h2>{isSignUp ? "Create Account" : "Welcome Back"}</h2>
+        <h1 className="title">{isSignUp ? "V I S U R A" : "V I S U R A"}</h1>
         <form onSubmit={handleSubmit}>
           {isSignUp && (
             <input
