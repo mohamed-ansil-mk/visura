@@ -49,6 +49,24 @@
     border-radius: 6px;
     font-size: 14px;
   }
+
+  .toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+  }
+  
+  .toggle-btn:hover {
+    color: #000;
+  }
+  
   
   .btn {
     background-color: #007bff;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 
+
 const LoginPage: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
@@ -47,12 +48,16 @@ const LoginPage: React.FC = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+         
+
+
+
           <button type="submit" className="btn">
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
