@@ -1,15 +1,9 @@
 import React from "react";
-
+import "./HomePage.css"
 const HomePage: React.FC = () => {
   return (
-    <div style={{ 
-      height: "100vh", 
-      display: "flex", 
-      justifyContent: "center", 
-      alignItems: "center", 
-      backgroundColor: "#f4f4f4" 
-    }}>
-      <h1>Welcome to the Home Page!</h1>
+    <div className="home-container">
+      <h1 className="title">V I S U R A</h1>
     </div>
   );
 };
