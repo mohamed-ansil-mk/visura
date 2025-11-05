@@ -7,7 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-size: 6rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
   }
@@ -16,4 +15,51 @@
     font-family:'Avenir Black',Heavy;
     font-size: larger;
     
+    
+}
+
+
+.prompt-bar {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 700px;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.prompt-bar input {
+  flex: 1;
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  background: transparent;
+  color:black;
+  outline: none;
+}
+
+.prompt-bar input::placeholder {
+  color: rgba(22, 20, 20, 0.7);
+}
+
+.prompt-bar button {
+  background-color: #161719;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.prompt-bar button:hover {
+  background-color:grey;
 }
