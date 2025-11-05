@@ -97,4 +97,29 @@
     cursor: pointer;
     font-weight: 500;
   }
+ 
+  .password-field {
+    position: relative;
+    width: 100%; 
+  }
+  
+  .password-field input {
+    width: 100%;
+    padding-right: 40px; /* space for the eye icon */
+    box-sizing: border-box;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 50%; /* Centers the icon vertically */
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s ease;
+  }
+  
+  .eye-icon:hover {
+    color: #000;
+  }
   

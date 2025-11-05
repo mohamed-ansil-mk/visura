@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 import "./LoginPage.css";
 
 const LoginPage: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [showPassword, setShowPassword]= useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +17,10 @@ const LoginPage: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate("/home");
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,14 +31,12 @@ const LoginPage: React.FC = () => {
       console.log("Sign In:", formData);
     }
 
-    // ✅ After login or signup, navigate to home page
-    navigate("/home");
   };
 
   return (
     <div className="container">
       <div className="form-box">
-        <h1 className="title">V I S U R A</h1>
+        <h1 className="title">{isSignUp ? "V I S U R A" : "V I S U R A"}</h1>
 
         <form onSubmit={handleSubmit}>
           {isSignUp && (
@@ -55,14 +59,22 @@ const LoginPage: React.FC = () => {
             required
           />
 
+          {/* Password Field with show/hide functionality */}
+
+          <div className="password-field">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+          <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <EyeOff size={20}/> : <Eye size={20} />}
+          </span>
+
+        </div>
 
           <button type="submit" className="btn">
             {isSignUp ? "Sign Up" : "Sign In"}
