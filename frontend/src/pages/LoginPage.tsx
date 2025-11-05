@@ -27,8 +27,10 @@ const LoginPage: React.FC = () => {
 
     if (isSignUp) {
       console.log("Sign Up:", formData);
+      navigate("/home");
     } else {
       console.log("Sign In:", formData);
+      navigate("/home");
     }
 
   };
