@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Button } from "../components/ui/button";
-import { useToast } from "../components/ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"; // 👈 make sure this exists
+import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
+  const [prompt, setPrompt] = useState("");
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -18,19 +20,28 @@ export default function HomePage() {
   };
 
   const handleGenerate = () => {
-    setLoading(true);
+    if (!prompt.trim()) {
+      toast({
+        title: "Please enter a prompt ✏️",
+        description: "Try describing what you want to see!",
+        variant: "destructive",
+      });
+      return;
+    }
 
+    setLoading(true);
     toast({
       title: "Generating...",
-      description: "Your AI image is being created 🧠🎨",
+      description: `Creating: "${prompt}" 🧠🎨`,
     });
 
     setTimeout(() => {
       setLoading(false);
       toast({
         title: "Image generated!",
-        description: "Your new artwork is ready 🎉",
+        description: `Your new artwork for "${prompt}" is ready 🎉`,
       });
+      setPrompt("");
     }, 3000);
   };
 
@@ -50,12 +61,24 @@ export default function HomePage() {
 
       {/* --- Main Content --- */}
       <main className="flex flex-col items-center justify-center flex-1">
-        <h1 className="text-9xl font-semibold mb-30">V I S U R A</h1>
+        <h1 className="text-9xl font-semibold mb-6">V I S U R A</h1>
 
+        {/* --- Prompt Input Field --- */}
+        <div className="flex gap-3 mb-6 w-full max-w-md">
+          <Input
+            type="text"
+            placeholder="Describe your image idea..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="flex-1 border-gray-300 focus-visible:ring-blue-400"
+          />
+        </div>
+
+        {/* --- Generate Button --- */}
         <Button
           onClick={handleGenerate}
           disabled={loading}
-          className="px-6 py-3 text-lg"
+          className="px-8 py-4 text-lg"
         >
           {loading ? (
             <div className="flex items-center gap-2">
